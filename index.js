@@ -30,6 +30,41 @@ app.post("/users", (req, res)=>{
     res.send(newUser)
 })
 
+const countries = [
+    {id:1,
+    name: "Bangladesh",
+    population: 180000000,
+    capital:"Dhaka",
+    },
+    {id:2,
+    name: "India",
+    population: 14400000000000,
+    capital: "New Delhi",
+
+    },
+    {id:3,
+    name: "USA",
+    population: 330000000,
+    capital: "Washington D.C"
+    }
+]
+
+app.get('/country',(req, res) => {
+
+res.send(countries);
+});
+
+
+app.post('/country', (req, res) => {
+    console.log("fetch the data");
+    const newCountry = req.body;
+    newCountry.id = countries.length + 1;
+
+    countries.push(newCountry);
+    res.send(newCountry)
+
+})
+
 app.listen(port, () =>{
     console.log(`Users Server running on port ${port}`);
 })
